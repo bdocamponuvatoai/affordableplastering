@@ -159,7 +159,7 @@ export function PlannerDialog() {
             />
           </label>
         </div>
-        <button className="button button-copper full-button" type="submit">
+        <button className="btn btn--primary full-button" type="submit">
           Prepare my call notes
         </button>
       </form>
@@ -181,15 +181,23 @@ export function PlannerDialog() {
           Your notes are ready. Call Dominic to discuss the project and next
           steps. No request has been sent.
         </p>
-        <a className="button button-copper full-button" href={site.phone.href}>
+        <a className="btn btn--primary full-button" href={site.phone.href}>
           <Icon name="phone" />
           {` Call Dominic · ${site.phone.display}`}
         </a>
         <div className="summary-actions">
-          <button className="text-link" type="button" onClick={handleEdit}>
+          <button
+            className="btn btn--secondary"
+            type="button"
+            onClick={handleEdit}
+          >
             Edit details
           </button>
-          <button className="text-link" type="button" onClick={handleDownload}>
+          <button
+            className="btn btn--secondary"
+            type="button"
+            onClick={handleDownload}
+          >
             Download notes
           </button>
         </div>

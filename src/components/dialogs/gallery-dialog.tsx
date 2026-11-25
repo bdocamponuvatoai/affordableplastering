@@ -31,13 +31,11 @@ export function GalleryDialog() {
       labelledBy="gallery-title"
       closeLabel="Close image"
     >
-      {/* height:auto keeps the intrinsic aspect ratio (the CSS caps it at 68dvh). */}
       <Image
         {...item.image}
         alt={item.dialogAlt}
         sizes="100vw"
         loading="eager"
-        style={{ height: "auto" }}
       />
       <div>
         <h2 id="gallery-title">{item.title}</h2>

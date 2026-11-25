@@ -27,6 +27,11 @@
 @import "./chrome/footer.css";
 @import "./chrome/action-bar.css";
 
+/* Dialogs (layer: components) */
+@import "./dialogs/dialog.css";
+@import "./dialogs/planner.css";
+@import "./dialogs/lightbox.css";
+
 /* Home page sections (layer: sections) */
 @import "./sections/hero.css";
 @import "./sections/highlights.css";

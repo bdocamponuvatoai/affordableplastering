@@ -1,0 +1,133 @@
+@layer components {
+  dialog {
+    color: var(--ink);
+  }
+
+  dialog::backdrop {
+    background: rgb(10 12 11 / 0.5);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Phones: a bottom sheet. 48em+: a centred card. Never set `display` on a
+     dialog without [open], or it would show while closed. */
+  .planner-dialog,
+  .privacy-dialog {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: 92vh;
+    max-height: 92dvh;
+    margin: 0;
+    padding: var(--space-3) var(--space-5)
+      calc(var(--space-6) + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background: var(--surface);
+    box-shadow: var(--shadow-raised);
+  }
+
+  /* Stays reachable while a long sheet scrolls. */
+  .dialog-close {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 -8px -12px auto;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+
+  .dialog-close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (hover: hover) {
+    .dialog-close:hover {
+      background: #e8e8e2;
+    }
+  }
+
+  /* Keep the page behind still (iOS needs the root locked too). */
+  html:has(body.modal-open) {
+    overflow: hidden;
+  }
+
+  .privacy-dialog h2 {
+    margin-block: var(--space-2) var(--space-4);
+    font-size: clamp(2rem, 1.6rem + 2vw, 2.75rem);
+  }
+
+  .privacy-dialog p:not(.eyebrow) {
+    margin-top: var(--space-4);
+    color: var(--ink-2);
+  }
+
+  .privacy-dialog a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (min-width: 48em) {
+    .planner-dialog,
+    .privacy-dialog {
+      inset: 0;
+      width: min(640px, 100% - 48px);
+      height: fit-content;
+      max-height: min(88vh, 860px);
+      max-height: min(88dvh, 860px);
+      margin: auto;
+      padding: var(--space-4) var(--space-7) var(--space-7);
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  /* Entrance: slide up on phones, settle in on larger screens. */
+  @media (prefers-reduced-motion: no-preference) {
+    .planner-dialog[open],
+    .privacy-dialog[open] {
+      transition:
+        translate 0.4s var(--ease),
+        scale 0.4s var(--ease),
+        opacity 0.3s var(--ease);
+    }
+
+    @starting-style {
+      .planner-dialog[open],
+      .privacy-dialog[open] {
+        translate: 0 48px;
+        opacity: 0;
+      }
+    }
+
+    dialog[open]::backdrop {
+      transition: opacity 0.3s var(--ease);
+    }
+
+    @starting-style {
+      dialog[open]::backdrop {
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: 48em) {
+      @starting-style {
+        .planner-dialog[open],
+        .privacy-dialog[open] {
+          translate: 0 0;
+          scale: 0.98;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@layer components {
+  .planner-heading {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .planner-heading h2 {
+    font-size: clamp(2rem, 1.6rem + 2vw, 2.75rem);
+  }
+
+  .planner-heading > p:last-child {
+    color: var(--ink-2);
+  }
+
+  .form-grid {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .form-grid label {
+    display: grid;
+    gap: var(--space-2);
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 16px;
+    border: 1px solid #d3d5cd;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: max(16px, 1rem); /* 16px+ stops iOS zooming on focus */
+    font-weight: 400;
+    /* Transparent outline shows up in forced-colors (high contrast) mode. */
+    outline: 2px solid transparent;
+    transition:
+      border-color 0.2s var(--ease),
+      box-shadow 0.2s var(--ease);
+  }
+
+  .form-grid input::placeholder,
+  .form-grid textarea::placeholder {
+    color: #6b7068; /* 5.1:1 */
+  }
+
+  .form-grid input:focus,
+  .form-grid select:focus,
+  .form-grid textarea:focus {
+    border-color: var(--copper);
+    box-shadow: 0 0 0 4px rgb(168 76 45 / 0.18);
+  }
+
+  .form-grid select {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%231d211e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  .form-grid textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .full-button {
+    width: 100%;
+    min-height: 56px;
+  }
+
+  .summary-sheet {
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+    background: var(--surface-2);
+  }
+
+  .summary-sheet h3 {
+    font-size: 1.25rem;
+  }
+
+  .summary-sheet dl {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .summary-sheet dl > div {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: var(--space-3);
+    font-size: 0.9375rem;
+  }
+
+  .summary-sheet dt {
+    color: var(--ink-2);
+  }
+
+  /* Long, unbroken input (pasted URLs, repeated letters) must wrap. */
+  .summary-sheet dd {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+
+  .summary-help {
+    margin-block: var(--space-5);
+    color: var(--ink-2);
+  }
+
+  .summary-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+  }
+
+  @media (min-width: 48em) {
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5) var(--space-4);
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+  }
+}
