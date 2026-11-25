@@ -1,0 +1,137 @@
+@layer sections {
+  /* Segmented pill tabs. Phones: a sideways-scrolling row that runs to the
+     screen edges; desktop: centred. */
+  .services__tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-inline: calc(-1 * var(--gutter));
+    padding: var(--space-2) var(--gutter); /* room for the focus ring */
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .services__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services__tab {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-2);
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    transition:
+      background-color 0.25s var(--ease),
+      color 0.25s var(--ease);
+  }
+
+  .services__tab[aria-selected="true"] {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  @media (hover: hover) {
+    .services__tab[aria-selected="false"]:hover {
+      background: #ebebe5;
+      color: var(--ink);
+    }
+  }
+
+  .service-card {
+    display: grid;
+    margin-top: var(--space-5);
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--surface-2);
+  }
+
+  .service-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+  }
+
+  .service-card__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-card__kicker {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+
+  .service-card__body {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: var(--space-3);
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .service-card__teaser {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--copper);
+  }
+
+  .service-card__text {
+    max-width: 34rem;
+    color: var(--ink-2);
+  }
+
+  .service-card__cta {
+    margin-top: var(--space-1);
+  }
+
+  .services-footnote {
+    margin-top: var(--space-5);
+    text-align: center;
+    color: var(--ink-2);
+  }
+
+  .services-footnote__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 600;
+    color: var(--copper);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (min-width: 64em) {
+    .services__tabs {
+      justify-content: center;
+      margin-inline: 0;
+      padding-inline: 0;
+      overflow: visible;
+    }
+
+    .service-card {
+      grid-template-columns: 55% 1fr;
+      min-height: 460px;
+      margin-top: var(--space-6);
+    }
+
+    .service-card__media {
+      aspect-ratio: auto;
+    }
+
+    .service-card__body {
+      padding: var(--space-8);
+    }
+  }
+}

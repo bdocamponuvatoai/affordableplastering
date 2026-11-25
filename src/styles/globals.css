@@ -30,6 +30,7 @@
 /* Home page sections (layer: sections) */
 @import "./sections/hero.css";
 @import "./sections/highlights.css";
+@import "./sections/services.css";
 
 /* Utilities (layer: utilities) */
 @import "./ui/reveal.css";

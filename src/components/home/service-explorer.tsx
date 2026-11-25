@@ -3,15 +3,15 @@
 import Image from "next/image";
 import { useRef, useState, type KeyboardEvent } from "react";
 import { PlanButton } from "@/components/dialogs/plan-button";
-import { Icon } from "@/components/ui/icon";
 import { services, type ServiceKey } from "@/content/services";
 
 const PANEL_ID = "service-panel";
 const tabId = (key: ServiceKey) => `tab-${key}`;
 
 /**
- * Vertical tabs (WAI-ARIA tabs pattern with automatic activation): arrow
- * keys move between tabs, Home/End jump to the first/last.
+ * Segmented service tabs (WAI-ARIA tabs, automatic activation). Left/Right
+ * (and Up/Down) move between tabs, Home/End jump to the first/last. On narrow
+ * screens the row scrolls sideways.
  */
 export function ServiceExplorer() {
   const [activeKey, setActiveKey] = useState<ServiceKey>(services[0].key);
@@ -25,9 +25,9 @@ export function ServiceExplorer() {
   ) {
     const last = services.length - 1;
     let next: number | undefined;
-    if (event.key === "ArrowDown" || event.key === "ArrowRight")
+    if (event.key === "ArrowRight" || event.key === "ArrowDown")
       next = index === last ? 0 : index + 1;
-    if (event.key === "ArrowUp" || event.key === "ArrowLeft")
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp")
       next = index === 0 ? last : index - 1;
     if (event.key === "Home") next = 0;
     if (event.key === "End") next = last;
@@ -39,12 +39,12 @@ export function ServiceExplorer() {
   }
 
   return (
-    <div className="services-layout">
+    <div className="services">
       <div
-        className="service-tabs"
+        className="services__tabs"
         role="tablist"
         aria-label="Plastering and drywall services"
-        aria-orientation="vertical"
+        aria-orientation="horizontal"
       >
         {services.map((service, index) => {
           const selected = service.key === activeKey;
@@ -55,6 +55,7 @@ export function ServiceExplorer() {
                 if (node) tabRefs.current.set(service.key, node);
                 else tabRefs.current.delete(service.key);
               }}
+              className="services__tab"
               id={tabId(service.key)}
               role="tab"
               aria-selected={selected}
@@ -63,43 +64,47 @@ export function ServiceExplorer() {
               onClick={() => setActiveKey(service.key)}
               onKeyDown={(event) => handleKeyDown(event, index)}
             >
-              <span>{service.label}</span>
-              <Icon name="plus" />
-              <small>{service.teaser}</small>
+              {service.label}
             </button>
           );
         })}
-        <p className="services-footnote">
-          {"Not sure what your walls need? "}
-          <PlanButton className="inline-button">
-            Start a conversation.
-          </PlanButton>
-        </p>
       </div>
       <div
-        className="service-panel"
+        className="service-card"
         id={PANEL_ID}
         role="tabpanel"
         aria-labelledby={tabId(active.key)}
         tabIndex={0}
       >
-        <div className="service-photo">
+        <div className="service-card__media">
           <Image
             {...active.image}
             alt={active.alt}
             sizes="(min-width: 64em) 660px, 100vw"
             loading="lazy"
           />
-          <span>CRAFT IN THE DETAILS</span>
+          <span className="chip chip--frosted service-card__kicker">
+            CRAFT IN THE DETAILS
+          </span>
         </div>
-        <div className="service-details">
+        <div className="service-card__body">
+          <p className="service-card__teaser">{active.teaser}</p>
           <h3>{active.title}</h3>
-          <p>{active.description}</p>
-          <PlanButton className="text-link" service={active.key}>
+          <p className="service-card__text">{active.description}</p>
+          <PlanButton
+            className="link-arrow service-card__cta"
+            service={active.key}
+          >
             {active.cta}
           </PlanButton>
         </div>
       </div>
+      <p className="services-footnote">
+        {"Not sure what your walls need? "}
+        <PlanButton className="services-footnote__link">
+          Start a conversation.
+        </PlanButton>
+      </p>
     </div>
   );
 }
