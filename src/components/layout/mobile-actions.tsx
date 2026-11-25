@@ -2,15 +2,15 @@ import { PlanButton } from "@/components/dialogs/plan-button";
 import { Icon } from "@/components/ui/icon";
 import { site } from "@/config/site";
 
-/** Fixed call / plan bar shown on small screens. */
+/** Floating call / plan bar on phones and tablets. Calling leads. */
 export function MobileActions() {
   return (
-    <div className="mobile-actions">
-      <a href={site.phone.href}>
+    <div className="action-bar">
+      <a className="btn btn--primary" href={site.phone.href}>
         <Icon name="phone" />
-        {` Call ${site.owner.name}`}
+        {`Call ${site.owner.name}`}
       </a>
-      <PlanButton>Plan your project</PlanButton>
+      <PlanButton className="btn btn--secondary">Plan your project</PlanButton>
     </div>
   );
 }

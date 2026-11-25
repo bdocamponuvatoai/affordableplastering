@@ -1,0 +1,222 @@
+@layer components {
+  .skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 100;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--ink);
+    color: #fff;
+    font-weight: 600;
+    transform: translateY(-160%);
+    transition: transform 0.2s var(--ease);
+  }
+
+  .skip-link:focus {
+    transform: none;
+  }
+
+  /* Sticky and frosted; solid white where backdrop blur is unsupported. */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    /* Hairline as a shadow so it adds no height to --header-h. */
+    box-shadow: 0 1px 0 var(--line);
+  }
+
+  @supports (
+    (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+  ) {
+    .site-header {
+      background: rgb(255 255 255 / 0.72);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+  }
+
+  /* The hairline fades in once the page scrolls (always shown otherwise). */
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: header-hairline linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 24px;
+    }
+  }
+
+  @keyframes header-hairline {
+    from {
+      box-shadow: 0 1px 0 transparent;
+    }
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    height: var(--header-h);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    margin-right: auto;
+    color: var(--ink);
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 33px;
+    stroke: none;
+  }
+
+  .brand > span {
+    display: grid;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+  }
+
+  .brand > span > span {
+    margin-top: 3px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    color: var(--ink-2);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .header-call,
+  .menu-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    transition: background-color 0.2s var(--ease);
+  }
+
+  .header-call svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .header-call__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    place-content: center;
+    gap: 6px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform 0.25s var(--ease);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
+
+  @media (hover: hover) {
+    .header-call:hover,
+    .menu-toggle:hover {
+      background: rgb(29 33 30 / 0.06);
+    }
+  }
+
+  /* Desktop: brand | centred nav | call pill. Keep in sync with
+     DESKTOP_QUERY in components/layout/header-menu.tsx. */
+  @media (min-width: 64em) {
+    .site-header__inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-5);
+    }
+
+    .brand {
+      justify-self: start;
+      margin-right: 0;
+    }
+
+    .desktop-nav {
+      display: flex;
+      justify-self: center;
+      gap: var(--space-6);
+    }
+
+    .desktop-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink-2);
+      transition: color 0.2s var(--ease);
+    }
+
+    .desktop-nav a:hover {
+      color: var(--ink);
+    }
+
+    .header-call {
+      display: inline-flex;
+      justify-self: end;
+      gap: 8px;
+      width: auto;
+      height: auto;
+      min-height: 44px;
+      padding: 10px 18px;
+      background: var(--copper);
+      color: #fff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .header-call svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .header-call__label {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip: auto;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+  }
+
+  @media (min-width: 64em) and (hover: hover) {
+    .header-call:hover {
+      background: var(--copper-strong);
+    }
+  }
+}

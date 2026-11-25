@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { Icon } from "@/components/ui/icon";
 import { SmartLink } from "@/components/ui/smart-link";
 import { mainNav, site } from "@/config/site";
 import { useSiteUi } from "./site-ui";
 
 const MOBILE_NAV_ID = "mobile-nav";
-const DESKTOP_QUERY = "(min-width: 901px)";
+// Must match the breakpoint where the desktop nav replaces the menu (header.css).
+const DESKTOP_QUERY = "(min-width: 64em)";
 
 export function MenuToggle() {
   const { menuOpen, toggleMenu, closeMenu } = useSiteUi();
@@ -58,16 +60,28 @@ export function MobileNav() {
   return (
     <nav
       id={MOBILE_NAV_ID}
-      className="mobile-nav"
+      className="mobile-menu"
       aria-label="Mobile navigation"
       hidden={!menuOpen}
     >
-      {mainNav.map((item) => (
-        <SmartLink key={item.href} href={item.href} onClick={closeMenu}>
-          {item.mobileLabel ?? item.label}
-        </SmartLink>
-      ))}
-      <a href={site.phone.href} onClick={closeMenu}>
+      <div className="mobile-menu__links">
+        {mainNav.map((item) => (
+          <SmartLink
+            key={item.href}
+            className="mobile-menu__link"
+            href={item.href}
+            onClick={closeMenu}
+          >
+            {item.mobileLabel ?? item.label}
+          </SmartLink>
+        ))}
+      </div>
+      <a
+        className="btn btn--primary mobile-menu__call"
+        href={site.phone.href}
+        onClick={closeMenu}
+      >
+        <Icon name="phone" />
         {`Call ${site.phone.display}`}
       </a>
     </nav>

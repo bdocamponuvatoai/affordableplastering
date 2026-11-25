@@ -22,7 +22,7 @@ export function PrivacyButton() {
   const { openPrivacy } = useSiteUi();
   return (
     <button
-      className="inline-button"
+      className="site-footer__privacy"
       onClick={(event) => openPrivacy(event.currentTarget)}
     >
       Privacy

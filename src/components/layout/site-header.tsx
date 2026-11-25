@@ -4,10 +4,11 @@ import { SmartLink } from "@/components/ui/smart-link";
 import { mainNav, site } from "@/config/site";
 import { MenuToggle, MobileNav } from "./header-menu";
 
+/** Sticky, frosted header. Phones: brand, call icon, menu. Desktop: full nav. */
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <div className="container header-inner">
+      <div className="site-header__inner container container--wide">
         <Brand />
         <nav className="desktop-nav" aria-label="Main navigation">
           {mainNav.map((item) => (
@@ -16,13 +17,10 @@ export function SiteHeader() {
             </SmartLink>
           ))}
         </nav>
-        <a
-          className="header-call"
-          href={site.phone.href}
-          aria-label={`Call ${site.owner.name} at ${site.phone.display}`}
-        >
+        <a className="header-call" href={site.phone.href}>
           <Icon name="phone" />
-          <span>{site.phone.display}</span>
+          {/* Visually hidden on phones; the accessible name stays the same. */}
+          <span className="header-call__label">{`Call ${site.phone.display}`}</span>
         </a>
         <MenuToggle />
       </div>

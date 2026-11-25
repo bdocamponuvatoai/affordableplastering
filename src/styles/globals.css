@@ -21,6 +21,12 @@
 @import "./ui/chip.css";
 @import "./ui/card.css";
 
+/* Page chrome (layer: components) */
+@import "./chrome/header.css";
+@import "./chrome/mobile-menu.css";
+@import "./chrome/footer.css";
+@import "./chrome/action-bar.css";
+
 /* Utilities (layer: utilities) */
 @import "./ui/reveal.css";
 @import "./ui/utilities.css";

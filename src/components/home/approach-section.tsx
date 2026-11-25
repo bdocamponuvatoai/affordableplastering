@@ -17,6 +17,7 @@ export function ApproachSection() {
           <span className="vertical-caption">CARE. CRAFT. A CLEAN FINISH.</span>
         </div>
         <div className="approach-copy">
+          <p className="approach__kicker">GOOD WORK. DOWN TO THE FINISH.</p>
           <p className="eyebrow">A PERSONAL APPROACH</p>
           <h2>
             Small details.

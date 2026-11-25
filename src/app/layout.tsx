@@ -6,7 +6,6 @@ import { MobileActions } from "@/components/layout/mobile-actions";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteUiProvider } from "@/components/layout/site-ui";
-import { Topline } from "@/components/layout/topline";
 import { IconDefinitions } from "@/components/ui/icon-definitions";
 import { isIndexable, siteUrl } from "@/config/deployment";
 import { site } from "@/config/site";
@@ -39,7 +38,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <a className="skip-link" href="#main">
             Skip to content
           </a>
-          <Topline />
           <SiteHeader />
           {children}
           <SiteFooter />
