@@ -1,6 +1,6 @@
 @layer sections {
   /* Phones: a swipeable row of cards (85% wide, next card peeking) that runs
-     to the screen edges. 48em+: an asymmetric two-column grid. */
+     to the screen edges. 48em+: a bento grid (see the media queries below). */
   .gallery__track {
     display: grid;
     grid-auto-flow: column;
@@ -19,6 +19,10 @@
   }
 
   .gallery-card {
+    /* Containing block for the visually hidden caption prefix: without it,
+       that absolutely positioned text escapes the carousel's clipping and
+       widens the page on phones. */
+    position: relative;
     display: grid;
     align-content: start;
     gap: var(--space-4);
@@ -98,23 +102,56 @@
     color: var(--ink-2);
   }
 
+  /* Tablets: the large card spans the first row, the rest pair up below. */
   @media (min-width: 48em) {
     .gallery__track {
       grid-auto-flow: row;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
-      gap: var(--space-6);
+      gap: var(--space-6) var(--space-5);
       margin-inline: 0;
       padding: 0;
       overflow: visible;
     }
 
-    .gallery-card--large .gallery-card__media {
+    .gallery-card__media {
       aspect-ratio: 4 / 3;
     }
 
-    .gallery-card:not(.gallery-card--large) {
-      margin-top: var(--space-8);
+    .gallery-card--large {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-card--large .gallery-card__media {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  /* Desktops: a six-column bento. The large card (4 columns) and the tall
+     card (2) share the first row; the other cards take 2 columns each. */
+  @media (min-width: 64em) {
+    .gallery__track {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .gallery-card {
+      grid-column: span 2;
+    }
+
+    .gallery-card--large {
+      grid-column: span 4;
+    }
+
+    /* Stretched to the row's height, the tall card's photo fills whatever its
+       caption leaves, so both photos in the row end on the same line. */
+    .gallery-card--tall {
+      grid-template-rows: 1fr auto;
+      align-content: stretch;
+    }
+
+    .gallery-card--tall .gallery-card__media {
+      aspect-ratio: auto;
     }
   }
 }

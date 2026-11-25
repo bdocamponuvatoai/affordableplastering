@@ -18,6 +18,9 @@ export const photo = {
   finishedInterior: photoOf("finished-interior"),
   plasteringDetail: photoOf("plastering-detail"),
   drywallInterior: photoOf("drywall-interior"),
+  plasterRepair: photoOf("plaster-repair"),
+  plasterArchway: photoOf("plaster-archway"),
+  finishedCeiling: photoOf("finished-ceiling"),
 };
 
 export const heroImage: SiteImage = {
@@ -26,8 +29,8 @@ export const heroImage: SiteImage = {
 };
 
 export const approachImage: SiteImage = {
-  ...photo.plasteringDetail,
-  alt: "Illustrative craft detail of a finishing trowel and fresh plaster",
+  ...photo.plasterRepair,
+  alt: "Illustrative close view of a craftsperson smoothing a plaster wall repair with a trowel",
 };
 
 /** Largest generated size, used for social cards. */

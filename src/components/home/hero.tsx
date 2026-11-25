@@ -62,11 +62,13 @@ export function Hero() {
         <HeroStage>
           <div className="hero__scene">
             <div className="hero__media">
-              {/* LCP candidate: load immediately with high priority. */}
+              {/* LCP candidate: load immediately with high priority. On
+                  desktops the card is portrait (about 3:4), so the cover crop
+                  needs ~1.5x its height in width: 82vw, not the 50vw column. */}
               <Image
                 {...heroImage}
                 alt={heroImage.alt}
-                sizes="(min-width: 64em) 50vw, 100vw"
+                sizes="(min-width: 64em) 82vw, 100vw"
                 loading="eager"
                 fetchPriority="high"
               />

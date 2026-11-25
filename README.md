@@ -139,11 +139,16 @@ Settings → Environment Variables. They are read at **build time**.
 
 ## Images and fonts
 
-- The three photographs in `assets-src/images/` are **AI-generated
-  illustrations** (created 25 November 2026). They are not photos of the owner,
-  staff or completed Affordable Plastering projects, which is why the site
-  labels them as illustrative and their alt text says so. Replace them with real
-  project photos when available.
+- The six photographs in `assets-src/images/` are **illustrations**, not
+  photos of the owner, staff or completed Affordable Plastering projects, which
+  is why the site labels them as illustrative and their alt text says so. The
+  first three were AI-generated on 25 November 2026; `plaster-repair`,
+  `plaster-archway` and `finished-ceiling` were added on 26 November 2026 and
+  are labelled the same way. Replace them with real project photos when
+  available.
+- The inspiration gallery is laid out for five cards (one `size: "large"`, one
+  `size: "tall"`, three regular; see `src/content/gallery.ts`). Adding or
+  removing a card means revisiting `styles/sections/gallery.css`.
 - The "A" brand mark and favicon are original vector artwork made for this site.
 - After replacing a photo in `assets-src/images/`, run `npm run images` and
   commit the files it writes to `public/images/` (480, 768, 1080 and 1536 px

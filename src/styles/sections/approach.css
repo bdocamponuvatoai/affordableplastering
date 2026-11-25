@@ -59,11 +59,20 @@
     margin: 0;
   }
 
+  /* Square on phones and desktops; on tablets, where the photo spans the
+     single column, the photo's own 3:2 shape keeps it from towering over the
+     copy. Keep approach-section.tsx's sizes in step with these frames. */
   .approach__photo {
     position: relative;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1;
     overflow: hidden;
     border-radius: var(--radius-lg);
+  }
+
+  @media (min-width: 48em) {
+    .approach__photo {
+      aspect-ratio: 3 / 2;
+    }
   }
 
   .approach__photo img {
@@ -91,6 +100,10 @@
 
     .approach__media {
       order: -1;
+    }
+
+    .approach__photo {
+      aspect-ratio: 1;
     }
   }
 }

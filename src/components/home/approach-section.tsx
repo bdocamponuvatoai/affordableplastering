@@ -40,10 +40,13 @@ export function ApproachSection() {
         </div>
         <figure className="approach__media">
           <div className="approach__photo">
+            {/* sizes = the width the cover crop needs: a square frame shows
+                2/3 of the 3:2 photo, so it needs 1.5x the frame's width
+                (phones and desktops); tablets show the whole 3:2 photo. */}
             <Image
               {...approachImage}
               alt={approachImage.alt}
-              sizes="(min-width: 64em) 560px, 100vw"
+              sizes="(min-width: 80em) 830px, (min-width: 64em) 62vw, (min-width: 48em) 92vw, 134vw"
               loading="lazy"
             />
           </div>
