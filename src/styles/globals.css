@@ -31,6 +31,9 @@
 @import "./sections/hero.css";
 @import "./sections/highlights.css";
 @import "./sections/services.css";
+@import "./sections/approach.css";
+@import "./sections/gallery.css";
+@import "./sections/process.css";
 
 /* Utilities (layer: utilities) */
 @import "./ui/reveal.css";

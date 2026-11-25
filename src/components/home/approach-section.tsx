@@ -4,19 +4,12 @@ import { site } from "@/config/site";
 import { approachValues } from "@/content/home";
 import { approachImage } from "@/content/images";
 
+/** Dark band: the owner-led approach. Copy first on phones, photo left on desktop. */
 export function ApproachSection() {
   return (
-    <section className="approach" id="approach">
-      <div className="container approach-inner reveal">
-        <div className="approach-image">
-          <Image
-            {...approachImage}
-            sizes="(min-width: 64em) 560px, 100vw"
-            loading="lazy"
-          />
-          <span className="vertical-caption">CARE. CRAFT. A CLEAN FINISH.</span>
-        </div>
-        <div className="approach-copy">
+    <section className="section section--night approach" id="approach">
+      <div className="container approach__inner reveal">
+        <div className="approach__copy">
           <p className="approach__kicker">GOOD WORK. DOWN TO THE FINISH.</p>
           <p className="eyebrow">A PERSONAL APPROACH</p>
           <h2>
@@ -32,19 +25,31 @@ export function ApproachSection() {
             the owner. Talk through what needs attention, ask questions, and
             understand the next step.
           </p>
-          <div className="approach-values">
+          <ul className="approach__values" role="list">
             {approachValues.map((value) => (
-              <span key={value}>
+              <li key={value}>
                 <Icon name="check" />
-                {` ${value}`}
-              </span>
+                {value}
+              </li>
             ))}
-          </div>
-          <a className="button button-light" href={site.phone.href}>
+          </ul>
+          <a className="btn btn--light" href={site.phone.href}>
             <Icon name="phone" />
-            {` Talk with ${site.owner.name}`}
+            {`Talk with ${site.owner.name}`}
           </a>
         </div>
+        <figure className="approach__media">
+          <div className="approach__photo">
+            <Image
+              {...approachImage}
+              sizes="(min-width: 64em) 560px, 100vw"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="approach__caption">
+            CARE. CRAFT. A CLEAN FINISH.
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

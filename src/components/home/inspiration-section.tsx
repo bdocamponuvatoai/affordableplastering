@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/icon";
 import { galleryItems } from "@/content/gallery";
 import { GalleryCard } from "./gallery-card";
 
+/** Inspiration gallery: a swipeable carousel on phones, a grid on wider screens. */
 export function InspirationSection() {
   return (
     <section className="section inspiration" id="inspiration">
@@ -19,33 +20,33 @@ export function InspirationSection() {
           }
           lead="A little inspiration for what comes next. Explore the surfaces and details that can bring a room together."
         />
-        <div className="inspiration-grid">
+        <div className="gallery__track">
           {galleryItems.map((item, index) => (
             <GalleryCard
               key={item.title}
               index={index}
-              label={item.cardLabel}
               className={
-                item.large
-                  ? "inspiration-card inspiration-large"
-                  : "inspiration-card"
+                item.large ? "gallery-card gallery-card--large" : "gallery-card"
               }
             >
-              <div className="gallery-image">
+              <span className="gallery-card__media">
+                {/* Decorative here: the button's name is its visible text,
+                    and the lightbox image carries the description. */}
                 <Image
                   {...item.image}
-                  alt={item.cardAlt}
+                  alt=""
                   sizes="(min-width: 48em) 50vw, 85vw"
                   loading="lazy"
                 />
-                <span className="gallery-expand">
+                <span className="gallery-card__expand" aria-hidden="true">
                   <Icon name="expand" />
                 </span>
-              </div>
-              <div className="gallery-caption">
-                <h3>{item.title}</h3>
-                <span>{item.kicker}</span>
-              </div>
+              </span>
+              <span className="gallery-card__caption">
+                <span className="visually-hidden">View larger image: </span>
+                <span className="gallery-card__title">{item.title}</span>{" "}
+                <span className="gallery-card__kicker">{item.kicker}</span>
+              </span>
             </GalleryCard>
           ))}
         </div>

@@ -5,7 +5,7 @@ import { processSteps } from "@/content/home";
 
 export function ProcessSection() {
   return (
-    <section className="process-section">
+    <section className="section section--alt process">
       <div className="container reveal">
         <SectionHeading
           eyebrow="LET’S KEEP IT SIMPLE"
@@ -16,20 +16,25 @@ export function ProcessSection() {
             </>
           }
           action={
-            <PlanButton className="button button-outline">
+            <PlanButton className="btn btn--secondary">
               Plan your project
             </PlanButton>
           }
         />
-        <div className="process-grid">
-          {processSteps.map((step) => (
-            <article key={step.title}>
-              <Icon name={step.icon} />
+        <ol className="process__steps" role="list">
+          {processSteps.map((step, index) => (
+            <li key={step.title} className="process__step">
+              <span className="process__number" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="process__icon">
+                <Icon name={step.icon} />
+              </span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
