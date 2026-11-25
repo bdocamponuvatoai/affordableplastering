@@ -3,18 +3,25 @@ import type { ReactNode } from "react";
 type SectionHeadingProps = {
   eyebrow: string;
   title: ReactNode;
-  /** Right-hand column: an intro paragraph or an action. */
-  aside: ReactNode;
+  /** Intro paragraph under the title. */
+  lead?: ReactNode;
+  /** A call to action under the title (and lead). */
+  action?: ReactNode;
 };
 
-export function SectionHeading({ eyebrow, title, aside }: SectionHeadingProps) {
+/** Centred section intro: eyebrow, title, optional lead and action. */
+export function SectionHeading({
+  eyebrow,
+  title,
+  lead,
+  action,
+}: SectionHeadingProps) {
   return (
     <div className="section-heading">
-      <div>
-        <p className="eyebrow">{eyebrow}</p>
-        <h2>{title}</h2>
-      </div>
-      {aside}
+      <p className="eyebrow">{eyebrow}</p>
+      <h2 className="section-heading__title">{title}</h2>
+      {lead ? <p className="section-heading__lead">{lead}</p> : null}
+      {action}
     </div>
   );
 }

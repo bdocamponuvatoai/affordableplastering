@@ -7,7 +7,7 @@ import { GalleryCard } from "./gallery-card";
 export function InspirationSection() {
   return (
     <section className="section inspiration" id="inspiration">
-      <div className="container">
+      <div className="container reveal">
         <SectionHeading
           eyebrow="THE POSSIBILITIES, FINISHED"
           title={
@@ -17,12 +17,7 @@ export function InspirationSection() {
               in a <em>new light.</em>
             </>
           }
-          aside={
-            <p>
-              A little inspiration for what comes next. Explore the surfaces and
-              details that can bring a room together.
-            </p>
-          }
+          lead="A little inspiration for what comes next. Explore the surfaces and details that can bring a room together."
         />
         <div className="inspiration-grid">
           {galleryItems.map((item, index) => (

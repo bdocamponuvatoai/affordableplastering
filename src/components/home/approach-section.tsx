@@ -7,7 +7,7 @@ import { approachImage } from "@/content/images";
 export function ApproachSection() {
   return (
     <section className="approach" id="approach">
-      <div className="container approach-inner">
+      <div className="container approach-inner reveal">
         <div className="approach-image">
           <Image
             {...approachImage}

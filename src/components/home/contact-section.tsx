@@ -6,7 +6,7 @@ export function ContactSection() {
   const { address } = site;
   return (
     <section className="contact-section" id="contact">
-      <div className="container contact-inner">
+      <div className="container contact-inner reveal">
         <div className="contact-copy">
           <p className="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
           <h2>

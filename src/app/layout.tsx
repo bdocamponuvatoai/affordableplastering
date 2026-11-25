@@ -10,7 +10,7 @@ import { Topline } from "@/components/layout/topline";
 import { IconDefinitions } from "@/components/ui/icon-definitions";
 import { isIndexable, siteUrl } from "@/config/deployment";
 import { site } from "@/config/site";
-import { openSans } from "./fonts";
+import { instrumentSerif, inter } from "./fonts";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -21,13 +21,19 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: site.themeColor,
+  // Lets the mobile action bar sit above the iPhone home indicator.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // data-scroll-behavior: the CSS uses smooth scrolling for in-page links;
     // this lets Next.js jump instantly on route changes.
-    <html lang="en" className={openSans.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={`${inter.variable} ${instrumentSerif.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body>
         <SiteUiProvider>
           <a className="skip-link" href="#main">

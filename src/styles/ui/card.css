@@ -1,0 +1,7 @@
+@layer components {
+  .card {
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    box-shadow: var(--shadow-card);
+  }
+}

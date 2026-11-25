@@ -1,37 +1,26 @@
 /*
- * Global stylesheet: imported once from src/app/layout.tsx.
+ * Global stylesheet, imported once from src/app/layout.tsx.
  *
- * THE IMPORT ORDER MATTERS. The partials were split from the original single
- * stylesheet and are listed in the order their rules first appeared there, so
- * the cascade is unchanged: later files win ties against earlier ones (for
- * example, section rules override base element rules at equal specificity,
- * and overrides.css beats breakpoint font sizes). Add new partials where their
- * rules belong in this order, and keep overrides.css last.
+ * Mobile-first: base rules target phones; larger screens are added with
+ * min-width queries (40em, 48em, 64em, 80em, 90em). Every partial wraps its
+ * rules in one cascade layer, so precedence comes from the layer order below,
+ * not from import order or selector tricks. Later layers win.
  */
-@import "./base/tokens.css";
-@import "./base/base.css";
-@import "./base/layout.css";
-@import "./components/eyebrow.css";
-@import "./components/buttons.css";
-@import "./components/skip-link.css";
-@import "./layout/topline.css";
-@import "./layout/header.css";
-@import "./components/brand.css";
-@import "./sections/hero.css";
-@import "./sections/service-strip.css";
-@import "./components/section.css";
-@import "./sections/services.css";
-@import "./sections/approach.css";
-@import "./sections/inspiration.css";
-@import "./sections/process.css";
-@import "./sections/faq.css";
-@import "./sections/contact.css";
-@import "./layout/footer.css";
-@import "./layout/mobile-actions.css";
-@import "./components/icons.css";
-@import "./components/dialog.css";
-@import "./components/planner.css";
-@import "./components/gallery-dialog.css";
-@import "./components/privacy-dialog.css";
-@import "./pages/not-found.css";
-@import "./overrides.css";
+@layer reset, tokens, base, layout, components, sections, utilities;
+
+/* Foundation */
+@import "./reset.css";
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+
+/* Components (layer: components) */
+@import "./ui/button.css";
+@import "./ui/eyebrow.css";
+@import "./ui/section-heading.css";
+@import "./ui/chip.css";
+@import "./ui/card.css";
+
+/* Utilities (layer: utilities) */
+@import "./ui/reveal.css";
+@import "./ui/utilities.css";

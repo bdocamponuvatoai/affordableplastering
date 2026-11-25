@@ -1,20 +1,21 @@
-import localFont from "next/font/local";
+import { Instrument_Serif, Inter } from "next/font/google";
 
-// Open Sans (Apache-2.0, see src/assets/fonts/FONT-LICENSE.txt), self-hosted.
-// The semibold file covers weights 600–800, as in the original stylesheet.
-export const openSans = localFont({
-  src: [
-    {
-      path: "../assets/fonts/open-sans-regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../assets/fonts/open-sans-semibold.ttf",
-      weight: "600 800",
-      style: "normal",
-    },
-  ],
-  variable: "--font-open-sans",
+// Downloaded at build time and served from the site itself (no requests to
+// Google from visitors' browsers).
+
+/** UI and body text. Variable weight plus optical size (opsz). */
+export const inter = Inter({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+/** Italic accent words in headings and the footer tagline. */
+export const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  style: "italic",
+  subsets: ["latin"],
+  variable: "--font-instrument",
   display: "swap",
 });

@@ -5,7 +5,7 @@ import { faqs } from "@/content/faq";
 export function FaqSection() {
   return (
     <section className="section faq-section">
-      <div className="container faq-layout">
+      <div className="container faq-layout reveal">
         <div>
           <p className="eyebrow">A FEW HELPFUL ANSWERS</p>
           <h2>

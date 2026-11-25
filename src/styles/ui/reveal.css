@@ -1,0 +1,25 @@
+@layer utilities {
+  /*
+   * Fade-up as a section scrolls into view. Pure CSS (scroll-driven
+   * animations), so content is never hidden: browsers without support, or
+   * visitors who prefer reduced motion, simply see it.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal linear both;
+        animation-timeline: view();
+        /* Ends 200px after the top edge enters: always reachable, even for
+           the last section and for sections taller than the screen. */
+        animation-range: entry 0% entry 200px;
+      }
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      translate: 0 24px;
+    }
+  }
+}

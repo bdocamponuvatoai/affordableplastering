@@ -1,0 +1,93 @@
+@layer components {
+  /* Pill buttons. Use on <a> or <button>. Call actions use --primary. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    font: 600 1rem/1.2 var(--font-sans);
+    letter-spacing: -0.011em;
+    text-align: center;
+    text-wrap: balance;
+    transition:
+      background-color 0.25s var(--ease),
+      border-color 0.25s var(--ease),
+      color 0.25s var(--ease),
+      transform 0.25s var(--ease);
+  }
+
+  .btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn--primary {
+    background: var(--copper);
+    color: #fff;
+  }
+
+  .btn--secondary {
+    background: transparent;
+    border-color: rgb(29 33 30 / 0.22);
+    color: var(--ink);
+  }
+
+  .btn--light {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .btn--dark {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  @media (hover: hover) {
+    .btn--primary:hover {
+      background: var(--copper-strong);
+    }
+
+    .btn--secondary:hover {
+      border-color: var(--ink);
+      background: rgb(29 33 30 / 0.04);
+    }
+
+    .btn--light:hover {
+      background: #efeee8;
+    }
+
+    .btn--dark:hover {
+      background: #000;
+    }
+  }
+
+  /* Text link with a trailing arrow (decorative for screen readers). */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    font-weight: 600;
+    color: var(--copper);
+  }
+
+  .link-arrow::after {
+    content: "→";
+    content: "→" / "";
+    transition: translate 0.25s var(--ease);
+  }
+
+  @media (hover: hover) {
+    .link-arrow:hover::after {
+      translate: 3px 0;
+    }
+  }
+}

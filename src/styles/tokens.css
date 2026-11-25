@@ -1,0 +1,66 @@
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    /* Colour (contrast ratios are against the background they're used on) */
+    --ink: #1d211e; /* 16.3:1 on white */
+    --ink-2: #5a5f57; /* 6.5:1 on white, 6.0:1 on --surface-2 */
+    --surface: #ffffff;
+    --surface-2: #f5f5f2;
+    --line: #e3e4de;
+    --copper: #a84c2d; /* 5.6:1 on white */
+    --copper-strong: #8f3f24; /* white on it: 7.2:1 */
+    --copper-soft: #f2c4ac; /* on --copper-strong: 4.6:1 */
+    --copper-bright: #bb613e; /* display sizes only (4.3:1) */
+    --night: #171b18;
+    --night-ink-2: #b8bdb3; /* 9.1:1 on --night */
+    --night-accent: #e8a07f; /* 8.1:1 on --night */
+
+    /* Type (font variables come from next/font in src/app/fonts.ts) */
+    --font-sans:
+      var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+      sans-serif;
+    --font-serif: var(--font-instrument), Georgia, "Times New Roman", serif;
+    --fs-h1: clamp(2.75rem, 1.6rem + 5.6vw, 6rem);
+    --fs-h2: clamp(2.125rem, 1.4rem + 3.4vw, 4rem);
+    --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+    --fs-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+    --fs-body: 1.0625rem;
+    --fs-small: 0.875rem;
+    --fs-eyebrow: 0.8125rem;
+
+    /* Space (4px base) */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 96px;
+    --space-10: 128px;
+    --section-pad: clamp(4.5rem, 3rem + 7vw, 9rem);
+    --gutter: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+    --content: 1200px;
+    --wide: 1440px;
+
+    /* Shape, depth, motion */
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-pill: 999px;
+    --shadow-card:
+      0 1px 2px rgb(23 27 24 / 0.04), 0 8px 24px rgb(23 27 24 / 0.06);
+    --shadow-raised:
+      0 2px 6px rgb(23 27 24 / 0.06), 0 24px 64px rgb(23 27 24 / 0.18);
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --header-h: 56px;
+  }
+
+  @media (min-width: 64em) {
+    :root {
+      --header-h: 64px;
+    }
+  }
+}

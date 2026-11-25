@@ -6,7 +6,7 @@ import { processSteps } from "@/content/home";
 export function ProcessSection() {
   return (
     <section className="process-section">
-      <div className="container">
+      <div className="container reveal">
         <SectionHeading
           eyebrow="LET’S KEEP IT SIMPLE"
           title={
@@ -15,7 +15,7 @@ export function ProcessSection() {
               <br />A clear <em>next step.</em>
             </>
           }
-          aside={
+          action={
             <PlanButton className="button button-outline">
               Plan your project
             </PlanButton>
