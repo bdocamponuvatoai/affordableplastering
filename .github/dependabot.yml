@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      next-react:
+        patterns:
+          - next
+          - eslint-config-next
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+      types:
+        patterns:
+          - "@types/*"
+    ignore:
+      # eslint-config-next's plugins (react, import, jsx-a11y) only support ESLint 9.
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      # Keep in step with Next.js's supported TypeScript major.
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
+      # Matches the Node.js major in .nvmrc; bump both together.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

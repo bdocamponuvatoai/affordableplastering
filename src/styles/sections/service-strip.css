@@ -1,0 +1,44 @@
+.service-strip {
+  border-bottom: 1px solid var(--line);
+  background: var(--soft);
+}
+.service-strip .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 25px;
+}
+.service-strip span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.79rem;
+  font-weight: 600;
+}
+.service-strip svg {
+  color: var(--copper);
+  width: 20px;
+  height: 20px;
+}
+@media (max-width: 1150px) {
+  .service-strip span {
+    font-size: 0.7rem;
+    gap: 8px;
+  }
+}
+@media (max-width: 680px) {
+  .service-strip .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 12px;
+    padding-block: 23px;
+  }
+  .service-strip span {
+    font-size: 0.68rem;
+    gap: 9px;
+  }
+  .service-strip svg {
+    width: 18px;
+    height: 18px;
+  }
+}

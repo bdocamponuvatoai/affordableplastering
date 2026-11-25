@@ -1,0 +1,126 @@
+.planner-dialog {
+  width: 650px;
+}
+.planner-heading h2 {
+  font-size: 2.6rem;
+}
+.planner-heading > p:last-child {
+  font-size: 0.83rem;
+  margin-block: 17px 26px;
+  max-width: 490px;
+}
+.planner-heading .eyebrow {
+  margin-bottom: 12px;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 18px;
+  margin-bottom: 26px;
+}
+.form-grid label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  width: 100%;
+  border: 1px solid #c7ccc2;
+  border-radius: 1px;
+  padding: 11px;
+  font-size: 0.875rem;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 400;
+  min-height: 46px;
+}
+.form-grid select {
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23252b25' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.form-grid textarea {
+  resize: vertical;
+}
+.full-width {
+  grid-column: 1/-1;
+}
+.full-button {
+  width: 100%;
+}
+.summary-sheet {
+  background: var(--soft);
+  padding: 23px;
+}
+.summary-sheet h3 {
+  font-size: 1.15rem;
+}
+.summary-sheet dl {
+  margin: 17px 0 0;
+  display: grid;
+  gap: 12px;
+}
+.summary-sheet dl > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  font-size: 0.82rem;
+  gap: 15px;
+}
+.summary-sheet dt {
+  color: var(--muted);
+}
+.summary-sheet dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.summary-help {
+  font-size: 0.82rem;
+  margin-block: 20px;
+}
+.summary-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+@media (max-width: 680px) {
+  .planner-heading h2 {
+    font-size: 2.15rem;
+  }
+  .planner-heading > p:last-child {
+    font-size: 0.8rem;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .form-grid input,
+  .form-grid select,
+  .form-grid textarea {
+    font-size: 16px;
+  }
+  .full-width {
+    grid-column: auto;
+  }
+  .summary-sheet {
+    padding: 19px;
+  }
+  .summary-sheet dl > div {
+    grid-template-columns: 73px 1fr;
+    font-size: 0.78rem;
+    gap: 10px;
+  }
+  .planner-dialog .full-button {
+    font-size: 0.78rem;
+    padding-inline: 12px;
+  }
+  .summary-actions .text-link {
+    font-size: 0.8rem;
+  }
+}

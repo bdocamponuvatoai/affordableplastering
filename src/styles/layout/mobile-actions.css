@@ -1,0 +1,40 @@
+.mobile-actions {
+  display: none;
+}
+@media (max-width: 680px) {
+  .mobile-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    padding: 10px 12px max(10px, env(safe-area-inset-bottom));
+    gap: 10px;
+  }
+  .mobile-actions a,
+  .mobile-actions button {
+    font-size: 0.76rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    min-height: 46px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .mobile-actions button {
+    background: var(--copper);
+    border-color: var(--copper);
+    color: #fff;
+  }
+  .mobile-actions svg {
+    width: 16px;
+    height: 16px;
+  }
+}

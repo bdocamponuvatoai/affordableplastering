@@ -1,0 +1,59 @@
+/* Late overrides carried over from the original stylesheet. They come after
+ * every media query on purpose (they win over the breakpoint font sizes), so
+ * this file must stay the last import in globals.css.
+ *
+ * Keep reading text comfortable at every viewport. */
+.hero-description,
+.section-heading > p,
+.service-details p,
+.approach-copy > p:not(.eyebrow),
+.process-grid p,
+.faqs details p,
+.contact-copy > p:not(.eyebrow),
+.planner-heading > p:last-child,
+.summary-help,
+.privacy-dialog p:not(.eyebrow) {
+  font-size: 1rem;
+}
+.desktop-nav,
+.header-call,
+.text-link,
+.hero-actions .text-link,
+.contact-card .text-link,
+.button,
+.hero-actions .button,
+.planner-dialog .full-button,
+.contact-copy .button,
+.mobile-actions a,
+.mobile-actions button {
+  font-size: 0.875rem;
+}
+.service-tabs > button small,
+.services-footnote,
+.approach-values,
+.form-grid label,
+.summary-sheet dl > div,
+.contact-card dl > div {
+  font-size: 0.875rem;
+}
+.faqs summary {
+  font-size: 1rem;
+}
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  font-size: 1rem;
+}
+@media (max-width: 680px) {
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+  }
+  .service-strip span {
+    font-size: 0.75rem;
+  }
+  .approach-image {
+    height: 340px;
+  }
+}

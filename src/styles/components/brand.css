@@ -1,0 +1,38 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  line-height: 1.15;
+  flex-shrink: 0;
+}
+.brand-icon {
+  width: 42px;
+  height: 46px;
+  stroke: none;
+}
+.brand > span {
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+}
+.brand > span > span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  margin-top: 4px;
+}
+@media (max-width: 680px) {
+  .brand-icon {
+    width: 33px;
+    height: 37px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand > span {
+    font-size: 0.78rem;
+  }
+  .brand > span > span {
+    font-size: 0.57rem;
+  }
+}

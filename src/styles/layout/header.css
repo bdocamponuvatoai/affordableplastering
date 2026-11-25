@@ -1,0 +1,125 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+.desktop-nav {
+  display: flex;
+  gap: 29px;
+  font-size: 0.8125rem;
+}
+.desktop-nav a {
+  padding: 10px 0;
+  position: relative;
+}
+.desktop-nav a:after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--copper);
+  transition: width 0.2s;
+}
+.desktop-nav a:hover:after {
+  width: 100%;
+}
+.header-call {
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.header-call:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+.header-call svg {
+  width: 17px;
+  height: 17px;
+}
+.menu-toggle {
+  display: none;
+}
+.mobile-nav {
+  border-top: 1px solid var(--line);
+  padding: 10px 24px 24px;
+}
+.mobile-nav a {
+  display: block;
+  padding: 10px 0;
+}
+.menu-toggle {
+  background: none;
+  border: 0;
+  padding: 10px;
+}
+.menu-toggle span {
+  width: 23px;
+  height: 1.5px;
+  background: var(--ink);
+  display: block;
+  margin: 5px 0;
+  transition: transform 0.2s;
+}
+.menu-toggle[aria-expanded="true"] span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+@media (max-width: 1150px) {
+  .desktop-nav {
+    gap: 20px;
+    font-size: 0.75rem;
+  }
+  .header-call {
+    font-size: 0.75rem;
+    padding: 10px;
+  }
+}
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .header-call {
+    margin-left: auto;
+  }
+}
+@media (max-width: 680px) {
+  .header-inner {
+    height: 79px;
+    gap: 12px;
+  }
+  .header-call {
+    border: 0;
+    padding: 9px;
+    margin-left: auto;
+  }
+  .header-call span {
+    display: none;
+  }
+  .header-call svg {
+    width: 21px;
+    height: 21px;
+  }
+  .menu-toggle {
+    padding: 6px;
+  }
+}

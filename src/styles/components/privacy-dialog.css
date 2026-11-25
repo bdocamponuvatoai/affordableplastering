@@ -1,0 +1,14 @@
+.privacy-dialog {
+  width: 630px;
+}
+.privacy-dialog h2 {
+  font-size: 2.1rem;
+  letter-spacing: -0.04em;
+}
+.privacy-dialog p:not(.eyebrow) {
+  font-size: 0.9rem;
+  margin-top: 22px;
+}
+.privacy-dialog a {
+  text-decoration: underline;
+}
