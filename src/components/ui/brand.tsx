@@ -11,7 +11,7 @@ export function Brand() {
         <path d="m8 44 31-4" stroke="currentColor" strokeWidth="2" />
       </svg>
       <span>
-        AFFORDABLE<span>PLASTERING</span>
+        AFFORDABLE <span>PLASTERING</span>
       </span>
     </SmartLink>
   );

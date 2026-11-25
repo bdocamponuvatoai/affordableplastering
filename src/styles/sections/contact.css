@@ -1,6 +1,7 @@
 @layer sections {
   .contact__inner {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
   }
 
@@ -38,6 +39,7 @@
 
   .contact-details {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     align-content: start;
     gap: var(--space-4);
     padding: var(--space-6) var(--space-5);
@@ -66,17 +68,25 @@
     line-height: 1.1;
   }
 
+  /* Label beside value when there's room; value wraps below at large text sizes. */
   .contact-details dl > div {
-    display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
     padding-block: var(--space-3);
     border-top: 1px solid var(--line);
     font-size: 0.9375rem;
   }
 
   .contact-details dt {
+    flex: 0 0 7.5rem;
     color: var(--ink-2);
+  }
+
+  .contact-details dd {
+    flex: 1 1 12ch;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   @media (min-width: 64em) {

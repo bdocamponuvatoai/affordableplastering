@@ -1,14 +1,30 @@
 @layer sections {
   .hero {
     padding-top: clamp(2.5rem, 1.5rem + 5vw, 6rem);
+    /* Floating 3D cards may lean past the edges: never widen the page. */
+    overflow: hidden;
   }
 
-  /* Centred intro on every screen size. */
+  @supports (overflow: clip) {
+    .hero {
+      overflow: visible;
+      overflow-x: clip;
+    }
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+
+  /* ---- Copy: centred on phones, left column on desktop ---- */
   .hero__intro {
     display: grid;
     justify-items: center;
     gap: var(--space-5);
     max-width: 56rem;
+    margin-inline: auto;
     text-align: center;
   }
 
@@ -23,7 +39,6 @@
     color: var(--ink-2);
   }
 
-  /* Phones: full-width stacked pills; wider: one centred row. */
   .hero__actions {
     display: grid;
     gap: var(--space-3);
@@ -66,15 +81,35 @@
     color: var(--ink);
   }
 
-  /* Photo card: 4:5 phone, 16:10 tablet, 21:9 wide. */
+  /* ---- 3D stage ---- */
+  .hero__stage {
+    --tilt-x: 0deg; /* set by HeroStage from the pointer */
+    --tilt-y: 0deg;
+    --rest-x: 7deg; /* resting pose: leaning back */
+    --rest-y: 0deg;
+    position: relative;
+    padding-inline: 4%;
+    perspective: 1600px;
+    perspective-origin: 50% 20%;
+  }
+
+  .hero__scene {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(calc(var(--rest-x) + var(--tilt-x)))
+      rotateY(calc(var(--rest-y) + var(--tilt-y)));
+  }
+
   .hero__media {
     position: relative;
     isolation: isolate;
     aspect-ratio: 4 / 5;
-    margin-top: clamp(2.5rem, 2rem + 3vw, 4.5rem);
     overflow: hidden;
     border-radius: var(--radius-lg);
     background: var(--surface-2);
+    box-shadow:
+      0 50px 100px -30px rgb(23 27 24 / 0.45),
+      0 30px 60px -30px rgb(23 27 24 / 0.3);
   }
 
   .hero__media img {
@@ -92,15 +127,6 @@
     inset: 45% 0 0;
     background: linear-gradient(transparent, rgb(16 19 17 / 0.62));
     pointer-events: none;
-  }
-
-  .hero__kicker {
-    position: absolute;
-    z-index: 1;
-    top: 16px;
-    left: 16px;
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
   }
 
   .hero__caption {
@@ -133,6 +159,104 @@
     bottom: 16px;
   }
 
+  /* Glass cards floating in front of the photo at different depths. Solid
+     rather than blurred: backdrop blur is costly and flattens 3D in Safari. */
+  .hero__float {
+    position: absolute;
+    margin: 0;
+    border: 1px solid rgb(29 33 30 / 0.06);
+    border-radius: var(--radius-md);
+    background: rgb(255 255 255 / 0.95);
+    box-shadow:
+      0 30px 60px -20px rgb(23 27 24 / 0.35),
+      0 8px 20px -8px rgb(23 27 24 / 0.18);
+    transform: translateZ(var(--z));
+  }
+
+  .hero__float--kicker {
+    --z: 120px;
+    top: 6%;
+    right: -3%;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+
+  .hero__float--layers {
+    --z: 70px;
+    top: 26%;
+    left: -3%;
+    padding: 12px 14px;
+  }
+
+  .hero__layers {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__layers li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero__swatch {
+    width: 34px;
+    height: 14px;
+    border-radius: 4px;
+    box-shadow:
+      inset 0 -2px 0 rgb(0 0 0 / 0.08),
+      0 1px 2px rgb(0 0 0 / 0.1);
+  }
+
+  .hero__layers li:nth-child(1) .hero__swatch {
+    background: linear-gradient(#fbf9f5, #efeae2);
+  }
+
+  .hero__layers li:nth-child(2) .hero__swatch {
+    background: linear-gradient(#ebe5db, #ddd5c8);
+  }
+
+  .hero__layers li:nth-child(3) .hero__swatch {
+    background: linear-gradient(#dedbd3, #ccc8be);
+  }
+
+  .hero__layers li:nth-child(4) .hero__swatch {
+    background: linear-gradient(#cdd0c8, #b5b9b0);
+  }
+
+  /* Cinematic entrance and smooth pointer response (motion allowed only). */
+  @media (prefers-reduced-motion: no-preference) {
+    /* No load-time rotation of the photo card: re-rendering a large shadowed
+       card in 3D every frame measurably blocked the main thread. */
+    .hero__scene {
+      transition: transform 0.7s var(--ease);
+    }
+
+    .hero__float {
+      animation: hero-float-in 0.9s var(--ease) 0.45s backwards;
+    }
+
+    .hero__float--layers {
+      animation-delay: 0.6s;
+    }
+  }
+
+  @keyframes hero-float-in {
+    from {
+      opacity: 0;
+      transform: translateZ(0);
+    }
+  }
+
   @media (min-width: 40em) {
     .hero__actions {
       display: flex;
@@ -149,11 +273,6 @@
       aspect-ratio: 16 / 10;
     }
 
-    .hero__kicker {
-      top: 24px;
-      left: 24px;
-    }
-
     .hero__caption {
       left: 32px;
       right: auto;
@@ -166,9 +285,59 @@
     }
   }
 
-  @media (min-width: 80em) {
+  /* Desktop: copy left, 3D stage right, filling the first screen. */
+  @media (min-width: 64em) {
+    .hero {
+      padding-block: clamp(2rem, 1rem + 2vw, 3.5rem) var(--space-5);
+    }
+
+    .hero__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      align-items: center;
+      gap: var(--space-8);
+      min-height: calc(100vh - var(--header-h) - 4rem);
+      min-height: calc(100svh - var(--header-h) - 4rem);
+    }
+
+    .hero__intro {
+      justify-items: start;
+      margin-inline: 0;
+      text-align: left;
+    }
+
+    .hero__title {
+      font-size: clamp(2.75rem, 1rem + 4.4vw, 6rem);
+    }
+
+    .hero__actions {
+      justify-content: flex-start;
+    }
+
+    .hero__stage {
+      --rest-x: 6deg;
+      --rest-y: -14deg;
+      padding-inline: 6%;
+      perspective: 2000px;
+    }
+
     .hero__media {
-      aspect-ratio: 21 / 9;
+      aspect-ratio: 4 / 5;
+    }
+
+    .hero__float--layers {
+      top: 40%;
+      left: -8%;
+      padding: 14px 16px;
+    }
+
+    .hero__float--kicker {
+      padding: 10px 14px;
+      font-size: 0.6875rem;
+    }
+
+    .hero__float--kicker {
+      right: -6%;
+      top: 8%;
     }
   }
 }

@@ -12,18 +12,9 @@
     color: var(--ink);
   }
 
-  /* For labels on photos: frosted where supported, near-opaque otherwise. */
+  /* For labels on photos: near-opaque white. (No backdrop blur: it is costly
+     to render and gains little on a busy photo.) */
   .chip--frosted {
-    background: rgb(255 255 255 / 0.94);
-  }
-
-  @supports (
-    (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
-  ) {
-    .chip--frosted {
-      background: rgb(255 255 255 / 0.78);
-      -webkit-backdrop-filter: saturate(180%) blur(16px);
-      backdrop-filter: saturate(180%) blur(16px);
-    }
+    background: rgb(255 255 255 / 0.92);
   }
 }

@@ -13,18 +13,8 @@
     padding: 8px;
     border: 1px solid rgb(29 33 30 / 0.08);
     border-radius: 32px;
-    background: rgb(255 255 255 / 0.96);
+    background: rgb(255 255 255 / 0.97);
     box-shadow: var(--shadow-raised);
-  }
-
-  @supports (
-    (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
-  ) {
-    .action-bar {
-      background: rgb(255 255 255 / 0.74);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
-    }
   }
 
   .action-bar .btn {

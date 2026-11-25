@@ -17,32 +17,25 @@
     transform: none;
   }
 
-  /* Sticky and frosted; solid white where backdrop blur is unsupported. */
+  /* Sticky, near-opaque white. (Backdrop blur was measured as the single
+     biggest main-thread cost in Lighthouse, so it is not used here.) */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: #fff;
+    background: rgb(255 255 255 / 0.96);
     /* Hairline as a shadow so it adds no height to --header-h. */
     box-shadow: 0 1px 0 var(--line);
   }
 
-  @supports (
-    (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
-  ) {
-    .site-header {
-      background: rgb(255 255 255 / 0.72);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
-    }
-  }
-
   /* The hairline fades in once the page scrolls (always shown otherwise). */
   @supports (animation-timeline: scroll()) {
-    .site-header {
-      animation: header-hairline linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0px 24px;
+    @media (prefers-reduced-motion: no-preference) {
+      .site-header {
+        animation: header-hairline linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0px 24px;
+      }
     }
   }
 

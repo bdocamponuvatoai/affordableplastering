@@ -1,6 +1,6 @@
 @layer components {
-  /* Full-height panel under the header (positioned against the sticky
-     header; `fixed` would be trapped by the header's backdrop-filter). */
+  /* Full-height panel directly under the sticky header (positioned against
+     it, so it always starts at the header's bottom edge). */
   .mobile-menu {
     position: absolute;
     top: 100%;
