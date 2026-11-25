@@ -1,8 +1,7 @@
 @layer components {
   .site-footer {
     /* Bottom padding clears the floating action bar on phones/tablets. */
-    padding-block: var(--space-8)
-      calc(var(--space-9) + 16px + env(safe-area-inset-bottom));
+    padding-block: var(--space-8) calc(7.5rem + env(safe-area-inset-bottom)); /* rem: grows with the bar */
     background: var(--surface-2);
     color: var(--ink);
   }

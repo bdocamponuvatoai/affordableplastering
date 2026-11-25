@@ -1,6 +1,15 @@
 @layer base {
   html {
     scroll-padding-top: calc(var(--header-h) + 16px);
+    /* Keep focused controls clear of the floating action bar (in rem so it
+       grows with the text, like the bar itself). */
+    scroll-padding-bottom: calc(6rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 64em) {
+    html {
+      scroll-padding-bottom: 0;
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {

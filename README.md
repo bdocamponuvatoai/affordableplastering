@@ -172,7 +172,8 @@ Settings → Environment Variables. They are read at **build time**.
    - the floating Call/Plan bar sits clear of the home indicator;
    - the planner sheet's height is right with Safari's toolbar shown and
      hidden, and its fields don't zoom the page when tapped;
-   - the frosted header and action bar look frosted, not grey;
+   - the header and the Call/Plan bar stay readable over photos and the dark
+     band;
    - the page behind an open planner, privacy panel or photo doesn't scroll;
    - Call buttons open the phone app with (603) 718-4173.
 9. Submit `https://<domain>/sitemap.xml` in Google Search Console.

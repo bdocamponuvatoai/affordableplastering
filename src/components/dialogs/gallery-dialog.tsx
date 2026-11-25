@@ -35,7 +35,7 @@ export function GalleryDialog() {
         {...item.image}
         alt={item.dialogAlt}
         sizes="100vw"
-        loading="eager"
+        loading="lazy" /* loads when the dialog opens */
       />
       <div>
         <h2 id="gallery-title">{item.title}</h2>

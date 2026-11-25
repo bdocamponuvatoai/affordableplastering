@@ -117,7 +117,7 @@
 
   .summary-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
     gap: var(--space-3);
     margin-top: var(--space-3);
   }

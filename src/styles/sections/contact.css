@@ -8,6 +8,7 @@
   /* Copper call card. Text pairs: white 7.2:1, --copper-soft 4.6:1. */
   .contact-card {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     justify-items: start;
     align-content: center;
     gap: var(--space-4);
@@ -15,6 +16,11 @@
     border-radius: var(--radius-lg);
     background: var(--copper-strong);
     color: #fff;
+  }
+
+  /* Items are start-aligned; never let one grow wider than the card. */
+  .contact-card > * {
+    max-width: 100%;
   }
 
   .contact-card .eyebrow,
@@ -35,6 +41,7 @@
     font-weight: 650;
     letter-spacing: -0.035em;
     line-height: 1.1;
+    overflow-wrap: anywhere; /* only bites at very large text sizes */
   }
 
   .contact-details {

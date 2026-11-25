@@ -35,7 +35,11 @@ export function ServiceExplorer() {
     event.preventDefault();
     const key = services[next].key;
     setActiveKey(key);
-    tabRefs.current.get(key)?.focus();
+    const tab = tabRefs.current.get(key);
+    tab?.focus();
+    // focus() alone leaves a partly visible tab partly off-screen; align its
+    // start to the snap position so snapping engines (WebKit) don't undo it.
+    tab?.scrollIntoView({ block: "nearest", inline: "start" }); // agrees with scroll-snap
   }
 
   return (
