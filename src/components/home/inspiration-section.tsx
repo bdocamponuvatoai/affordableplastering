@@ -37,7 +37,12 @@ export function InspirationSection() {
               }
             >
               <div className="gallery-image">
-                <Image src={item.image} alt={item.cardAlt} loading="lazy" />
+                <Image
+                  {...item.image}
+                  alt={item.cardAlt}
+                  sizes="(min-width: 48em) 50vw, 85vw"
+                  loading="lazy"
+                />
                 <span className="gallery-expand">
                   <Icon name="expand" />
                 </span>

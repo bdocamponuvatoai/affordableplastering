@@ -10,8 +10,8 @@ export function ApproachSection() {
       <div className="container approach-inner">
         <div className="approach-image">
           <Image
-            src={approachImage.src}
-            alt={approachImage.alt}
+            {...approachImage}
+            sizes="(min-width: 64em) 560px, 100vw"
             loading="lazy"
           />
           <span className="vertical-caption">CARE. CRAFT. A CLEAN FINISH.</span>

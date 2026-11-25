@@ -30,6 +30,9 @@ jobs:
       - name: Typecheck, lint and format check
         run: npm run check
 
+      - name: Unit tests
+        run: npm test
+
       - name: Build static site
         run: npm run build
 

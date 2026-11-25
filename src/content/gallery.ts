@@ -1,8 +1,7 @@
-import type { StaticImageData } from "next/image";
-import { images } from "./images";
+import { photo, type Photo } from "./images";
 
 type GalleryItem = {
-  image: StaticImageData;
+  image: Photo;
   /** Accessible name of the card button. */
   cardLabel: string;
   cardAlt: string;
@@ -15,7 +14,7 @@ type GalleryItem = {
 
 export const galleryItems: readonly GalleryItem[] = [
   {
-    image: images.finishedInterior,
+    image: photo.finishedInterior,
     cardLabel: "View smooth living space concept",
     cardAlt: "Smooth plaster walls in a light-filled living room concept",
     dialogAlt:
@@ -25,7 +24,7 @@ export const galleryItems: readonly GalleryItem[] = [
     large: true,
   },
   {
-    image: images.drywallInterior,
+    image: photo.drywallInterior,
     cardLabel: "View renovation-ready drywall concept",
     cardAlt: "Clean drywall installation in a bright renovation concept",
     dialogAlt:

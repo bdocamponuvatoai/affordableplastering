@@ -1,5 +1,4 @@
-import type { StaticImageData } from "next/image";
-import { images } from "./images";
+import { photo, type Photo } from "./images";
 
 // Service descriptions are proposed marketing copy, written without any
 // claims about pricing, guarantees, licences or past projects.
@@ -14,7 +13,7 @@ type Service = {
   teaser: string;
   title: string;
   description: string;
-  image: StaticImageData;
+  image: Photo;
   alt: string;
   /** Text of the panel button that opens the planner preset to this service. */
   cta: string;
@@ -28,7 +27,7 @@ export const services: readonly Service[] = [
     title: "A finish you can feel good about.",
     description:
       "Explore plastering and skim-coating options for uneven or tired surfaces. The right preparation and finish can give your walls a clean, consistent look.",
-    image: images.plasteringDetail,
+    image: photo.plasteringDetail,
     alt: "Illustrative close-up of a plastering trowel smoothing a wall",
     cta: "Discuss your plastering project",
   },
@@ -39,7 +38,7 @@ export const services: readonly Service[] = [
     title: "Build your room on a good foundation.",
     description:
       "Planning a new space or opening up an existing one? Discuss drywall installation, joint finishing, and the preparation your room needs for its next stage.",
-    image: images.drywallInterior,
+    image: photo.drywallInterior,
     alt: "Illustrative newly installed drywall with neat taped joints in a renovation",
     cta: "Discuss your drywall project",
   },
@@ -50,7 +49,7 @@ export const services: readonly Service[] = [
     title: "Give your walls a fresh start.",
     description:
       "Cracks, holes, and worn surfaces can take attention away from a room. Describe the damage to Dominic and discuss a repair approach suited to the existing wall or ceiling.",
-    image: images.plasteringDetail,
+    image: photo.plasteringDetail,
     alt: "Illustrative detail of fresh plaster being smoothed across an interior wall",
     cta: "Discuss your repair",
   },
@@ -61,7 +60,7 @@ export const services: readonly Service[] = [
     title: "Bring the whole room together.",
     description:
       "A renovation deserves a thoughtful finish. Discuss your walls, ceilings, transitions, and the surface preparation needed to move your space toward completion.",
-    image: images.finishedInterior,
+    image: photo.finishedInterior,
     alt: "Illustrative completed room with smooth walls and crisp ceiling transitions",
     cta: "Discuss your renovation",
   },

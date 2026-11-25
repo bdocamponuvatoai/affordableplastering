@@ -33,8 +33,9 @@ export function GalleryDialog() {
     >
       {/* height:auto keeps the intrinsic aspect ratio (the CSS caps it at 68dvh). */}
       <Image
-        src={item.image}
+        {...item.image}
         alt={item.dialogAlt}
+        sizes="100vw"
         loading="eager"
         style={{ height: "auto" }}
       />

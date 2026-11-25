@@ -40,8 +40,8 @@ export function Hero() {
       <div className="hero-visual">
         {/* LCP image: load immediately with high priority. */}
         <Image
-          src={heroImage.src}
-          alt={heroImage.alt}
+          {...heroImage}
+          sizes="(min-width: 90em) 1440px, 100vw"
           loading="eager"
           fetchPriority="high"
         />

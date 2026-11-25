@@ -84,7 +84,12 @@ export function ServiceExplorer() {
         tabIndex={0}
       >
         <div className="service-photo">
-          <Image src={active.image} alt={active.alt} loading="lazy" />
+          <Image
+            {...active.image}
+            alt={active.alt}
+            sizes="(min-width: 64em) 660px, 100vw"
+            loading="lazy"
+          />
           <span>CRAFT IN THE DETAILS</span>
         </div>
         <div className="service-details">
