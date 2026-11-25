@@ -389,3 +389,22 @@ alt }` records instead of static imports. The OG image uses the 1536 file.
 Exact component markup, file split of CSS partials, icon tweaks (stroke width
 may become 1.75), micro-interaction details (hover lift, press scale),
 precise breakpoint tuning, and whether the header hairline is CSS-only.
+
+## Amendment (26 November 2026): 3D hero
+
+Requested by the team during implementation ("add a 3D container in the hero
+… don't make it empty"). It replaces the centred hero with a fuller first
+screen:
+
+- Desktop (64em+): two columns. Copy on the left (left-aligned), a CSS 3D
+  stage on the right that fills the first screen.
+- The stage: the hero photo as a card tilted in perspective, with two solid
+  "glass" cards floating in front of it at different depths: the existing
+  kicker "THE BEAUTY IS IN THE FINISH", and a decorative stack of wall layers
+  (Smooth finish, Skim coat, Joint finishing, Drywall; terms already used in
+  the service copy, `aria-hidden`).
+- Motion: the cards fade in on load; on devices with a fine pointer the scene
+  tilts towards the pointer. With reduced motion the scene is static.
+- Phones: the same stage under the copy (4:5 photo).
+- No backdrop blur anywhere except the dialog backdrop: Lighthouse showed blur
+  to be the largest main-thread cost, and blur flattens 3D in Safari.
