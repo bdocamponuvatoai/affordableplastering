@@ -1,0 +1,119 @@
+@layer sections {
+  .faq__inner {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .faq__intro {
+    display: grid;
+    justify-items: start;
+    align-content: start;
+    gap: var(--space-4);
+  }
+
+  /* One line on phones; two on desktop where the heading sits beside the list. */
+  .faq__intro h2 br {
+    display: none;
+  }
+
+  .faq__more {
+    color: var(--ink-2);
+  }
+
+  .faq__list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 64px;
+    padding-block: var(--space-4);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    transition:
+      transform 0.3s var(--ease),
+      background-color 0.3s var(--ease),
+      color 0.3s var(--ease);
+  }
+
+  .faq__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .faq__item[open] .faq__icon {
+    transform: rotate(45deg);
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .faq__answer {
+    padding: 0 48px var(--space-5) 0;
+    color: var(--ink-2);
+  }
+
+  .faq__answer a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Smooth open/close where the browser can animate to `auto` height. */
+  @supports selector(::details-content) {
+    @media (prefers-reduced-motion: no-preference) {
+      .faq__item {
+        interpolate-size: allow-keywords;
+      }
+
+      .faq__item::details-content {
+        block-size: 0;
+        overflow: hidden;
+        transition:
+          block-size 0.35s var(--ease),
+          content-visibility 0.35s allow-discrete;
+      }
+
+      .faq__item[open]::details-content {
+        block-size: auto;
+      }
+    }
+  }
+
+  @media (min-width: 64em) {
+    .faq__inner {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+      align-items: start;
+      gap: var(--space-9);
+    }
+
+    .faq__intro h2 br {
+      display: inline;
+    }
+  }
+}

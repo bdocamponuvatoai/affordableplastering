@@ -1,0 +1,96 @@
+@layer sections {
+  .contact__inner {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  /* Copper call card. Text pairs: white 7.2:1, --copper-soft 4.6:1. */
+  .contact-card {
+    display: grid;
+    justify-items: start;
+    align-content: center;
+    gap: var(--space-4);
+    padding: var(--space-7) var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--copper-strong);
+    color: #fff;
+  }
+
+  .contact-card .eyebrow,
+  .contact-card h2 em {
+    color: var(--copper-soft);
+  }
+
+  .contact-card__lead {
+    color: rgb(255 255 255 / 0.88);
+  }
+
+  .contact-card__number {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-block: var(--space-2);
+    font-size: clamp(2.25rem, 1.6rem + 3vw, 3.5rem);
+    font-weight: 650;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  .contact-details {
+    display: grid;
+    align-content: start;
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--surface-2);
+  }
+
+  .contact-details__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--copper);
+  }
+
+  .contact-details__label svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .contact-details h3 {
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  .contact-details dl > div {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--line);
+    font-size: 0.9375rem;
+  }
+
+  .contact-details dt {
+    color: var(--ink-2);
+  }
+
+  @media (min-width: 64em) {
+    .contact__inner {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-5);
+    }
+
+    .contact-card {
+      padding: var(--space-8);
+    }
+
+    .contact-details {
+      padding: var(--space-7) var(--space-6);
+    }
+  }
+}

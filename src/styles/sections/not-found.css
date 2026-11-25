@@ -1,0 +1,31 @@
+@layer sections {
+  /* 404: the hero's centred type and pills, nothing else. */
+  .not-found__inner {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: var(--space-5);
+    max-width: 48rem;
+    min-height: 50vh;
+    text-align: center;
+  }
+
+  .not-found h1 em {
+    color: var(--copper-bright); /* display size only */
+  }
+
+  .not-found__lead {
+    max-width: 32rem;
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+}

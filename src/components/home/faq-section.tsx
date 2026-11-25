@@ -4,9 +4,9 @@ import { faqs } from "@/content/faq";
 
 export function FaqSection() {
   return (
-    <section className="section faq-section">
-      <div className="container faq-layout reveal">
-        <div>
+    <section className="section faq">
+      <div className="container faq__inner reveal">
+        <div className="faq__intro">
           <p className="eyebrow">A FEW HELPFUL ANSWERS</p>
           <h2>
             {"Before "}
@@ -14,22 +14,26 @@ export function FaqSection() {
             {"we "}
             <em>begin.</em>
           </h2>
-          <p>
+          <p className="faq__more">
             Have a different question?
             <br />
-            <a className="text-link" href={site.phone.href}>
+            <a className="link-arrow" href={site.phone.href}>
               Give Dominic a call.
             </a>
           </p>
         </div>
-        <div className="faqs">
+        <div className="faq__list">
           {faqs.map((faq) => (
-            <details key={faq.question}>
-              <summary>
-                {faq.question}
-                <Icon name="plus" />
+            <details key={faq.question} className="faq__item">
+              <summary className="faq__question">
+                <span>{faq.question}</span>
+                <span className="faq__icon" aria-hidden="true">
+                  <Icon name="plus" />
+                </span>
               </summary>
-              <p>{faq.answer}</p>
+              <div className="faq__answer">
+                <p>{faq.answer}</p>
+              </div>
             </details>
           ))}
         </div>
