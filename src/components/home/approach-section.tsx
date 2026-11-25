@@ -42,6 +42,7 @@ export function ApproachSection() {
           <div className="approach__photo">
             <Image
               {...approachImage}
+              alt={approachImage.alt}
               sizes="(min-width: 64em) 560px, 100vw"
               loading="lazy"
             />

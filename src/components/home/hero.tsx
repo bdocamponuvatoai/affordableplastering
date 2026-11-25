@@ -48,6 +48,7 @@ export function Hero() {
         {/* LCP candidate: load immediately with high priority. */}
         <Image
           {...heroImage}
+          alt={heroImage.alt}
           sizes="(min-width: 90em) 1440px, 100vw"
           loading="eager"
           fetchPriority="high"
