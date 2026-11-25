@@ -1,17 +1,20 @@
 import { Icon } from "@/components/ui/icon";
 import { highlights } from "@/content/home";
 
+/** Four short highlights: 2 × 2 tiles on phones, one row on desktop. */
 export function ServiceStrip() {
   return (
-    <div className="service-strip">
-      <div className="container reveal">
+    <div className="highlights">
+      <ul className="container highlights__list reveal" role="list">
         {highlights.map((item) => (
-          <span key={item.label}>
-            <Icon name={item.icon} />
-            {` ${item.label}`}
-          </span>
+          <li key={item.label} className="highlights__item">
+            <span className="highlights__icon">
+              <Icon name={item.icon} />
+            </span>
+            {item.label}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

@@ -1,35 +1,42 @@
 import Image from "next/image";
 import { PlanButton } from "@/components/dialogs/plan-button";
+import { Icon } from "@/components/ui/icon";
 import { site } from "@/config/site";
 import { heroImage } from "@/content/images";
 
 export function Hero() {
   return (
     <section className="hero" id="home">
-      <div className="hero-copy">
+      <div className="container hero__intro">
         <p className="eyebrow">
-          <span className="short-rule"></span>
-          {" PLASTERING & DRYWALL SPECIALISTS"}
+          Plastering & drywall specialists · Hudson, New Hampshire
         </p>
-        <h1>
+        <h1 className="hero__title">
           Good walls.
           <br />
           Great <em>spaces.</em>
         </h1>
-        <p className="hero-description">
+        <p className="hero__lead">
           A fresh start for your walls. A better feel for your home. Plastering
           and drywall with the finish in mind, right here in Hudson, NH.
         </p>
-        <div className="hero-actions">
-          <PlanButton className="button button-copper">
+        {/* Call first: calling is the real lead; the planner prepares for it. */}
+        <div className="hero__actions">
+          <a className="btn btn--primary" href={site.phone.href}>
+            <Icon name="phone" />
+            {`Call ${site.phone.display}`}
+          </a>
+          <PlanButton className="btn btn--secondary">
             Let’s talk about your project
           </PlanButton>
-          <a className="text-link" href="#services">
+          <a className="link-arrow" href="#services">
             Explore our services
           </a>
         </div>
-        <div className="owner-note">
-          <span className="owner-mark">{`${site.owner.name.charAt(0)}.`}</span>
+        <div className="hero__owner">
+          <span className="hero__owner-mark" aria-hidden="true">
+            {`${site.owner.name.charAt(0)}.`}
+          </span>
           <span>
             A local business. A direct conversation.
             <br />
@@ -37,20 +44,24 @@ export function Hero() {
           </span>
         </div>
       </div>
-      <div className="hero-visual">
-        {/* LCP image: load immediately with high priority. */}
+      <div className="container container--wide hero__media">
+        {/* LCP candidate: load immediately with high priority. */}
         <Image
           {...heroImage}
           sizes="(min-width: 90em) 1440px, 100vw"
           loading="eager"
           fetchPriority="high"
         />
-        <div className="image-kicker">THE BEAUTY IS IN THE FINISH</div>
-        <div className="hero-image-caption">
+        <p className="chip chip--frosted hero__kicker">
+          THE BEAUTY IS IN THE FINISH
+        </p>
+        <p className="hero__caption">
           <span>From the surface up.</span>
           <span>Made to feel like home.</span>
-        </div>
-        <span className="image-disclosure">Illustrative finish concept</span>
+        </p>
+        <span className="chip chip--frosted hero__label">
+          Illustrative finish concept
+        </span>
       </div>
     </section>
   );
